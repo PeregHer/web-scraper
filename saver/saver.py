@@ -41,5 +41,5 @@ class Saver:
 
 
 while True:
-    Saver.insert_files()
     time.sleep(600)
+    Saver.insert_files()
