@@ -29,14 +29,14 @@ services:
     build:
       context: ./scraper
     volumes:
-      - data/:/app/data/
+      - data:/app/data/
 
   saver:
     container_name: saver
     build:
       context: ./saver
     volumes:
-      - data/:/app/data/
+      - data:/app/data/
 
 volumes:
   data:
