@@ -24,10 +24,10 @@ services:
   #     - ./grafana/dashboards/:/etc/grafana/provisioning/dashboards/
   #     - ./grafana/datasources/:/etc/grafana/provisioning/datasources/
 
-  scrapper:
-    container_name: scrapper
+  scraper:
+    container_name: scraper
     build:
-      context: ./scrapper
+      context: ./scraper
     volumes:
       - data/:/app/data/
 
