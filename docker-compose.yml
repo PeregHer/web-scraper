@@ -1,0 +1,44 @@
+version: "2.2"
+
+services:
+  # mongodb:
+  #   image: mongo
+  #   container_name: mongodb
+  #   ports: 
+  #     - "27017:27017"
+  #   volumes:
+  #     - ./mongodb/:/data/db/
+      
+  # grafana:
+  #   container_name: grafana
+  #   image: grafana/grafana
+  #   ports: 
+  #     - "80:3000"
+  #   environment:
+  #     GRAFANA_ADMIN_USER: admin
+  #     GRAFANA_ADMIN_PASSWORD: admin
+  #     GF_AUTH_ORG_ROLE: viewer
+  #     GF_AUTH_ANONYMOUS_ENABLED: "true"
+  #     GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: /etc/grafana/provisioning/dashboards/dashboards.json
+  #   volumes:
+  #     - ./grafana/dashboards/:/etc/grafana/provisioning/dashboards/
+  #     - ./grafana/datasources/:/etc/grafana/provisioning/datasources/
+
+  scrapper:
+    container_name: scrapper
+    build:
+      context: ./scrapper
+    volumes:
+      - data/:/app/data/
+
+  saver:
+    container_name: saver
+    build:
+      context: ./saver
+    volumes:
+      - data/:/app/data/
+
+volumes:
+  data:
+
+
