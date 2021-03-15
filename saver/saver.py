@@ -50,4 +50,4 @@ class Saver():
 
 while True:
     time.sleep(300)
-    Saver.insert_files()
+    Saver.insert_json()
