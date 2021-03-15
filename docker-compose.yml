@@ -26,6 +26,7 @@ services:
 
   scraper:
     container_name: scraper
+    restart: unless-stopped
     build:
       context: ./scraper
     volumes:
@@ -33,6 +34,7 @@ services:
 
   saver:
     container_name: saver
+    restart: unless-stopped
     build:
       context: ./saver
     volumes:
