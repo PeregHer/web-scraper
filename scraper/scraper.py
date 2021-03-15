@@ -36,9 +36,12 @@ class Scraper:
             json.dump(self.data, fp, indent=4)
 
 
-scraper = Scraper()
-
 while True:
-    scraper.search()
-    scraper.save_json()
-    time.sleep(60)
+    scraper = Scraper()
+    while True:
+        try:
+            scraper.search()
+            scraper.save_json()
+            time.sleep(10)
+        except:
+            break
