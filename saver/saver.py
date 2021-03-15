@@ -49,5 +49,5 @@ class Saver():
             print(file, 'Inséré')
 
 while True:
-    time.sleep(30)
-    Saver.insert_json()
+    time.sleep(600)
+    Saver.insert_files()
