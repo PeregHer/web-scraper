@@ -1,42 +1,52 @@
-version: "2.2"
+version: "3.8"
 
 services:
-  # mongodb:
-  #   image: mongo
-  #   container_name: mongodb
-  #   ports: 
-  #     - "27017:27017"
-  #   volumes:
-  #     - ./mongodb/:/data/db/
-      
-  # grafana:
-  #   container_name: grafana
-  #   image: grafana/grafana
-  #   ports: 
-  #     - "80:3000"
-  #   environment:
-  #     GRAFANA_ADMIN_USER: admin
-  #     GRAFANA_ADMIN_PASSWORD: admin
-  #     GF_AUTH_ORG_ROLE: viewer
-  #     GF_AUTH_ANONYMOUS_ENABLED: "true"
-  #     GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: /etc/grafana/provisioning/dashboards/dashboards.json
-  #   volumes:
-  #     - ./grafana/dashboards/:/etc/grafana/provisioning/dashboards/
-  #     - ./grafana/datasources/:/etc/grafana/provisioning/datasources/
+  postgres:
+    container_name: postgres
+    restart: unless-stopped
+    image: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: coincap
+      PGDATA: /data/postgres
+    volumes:
+       - ./postgres:/data/postgres
+       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+  
+  grafana:
+    container_name: grafana
+    restart: unless-stopped
+    image: grafana/grafana
+    ports: 
+      - "80:3000"
+    environment:
+      GRAFANA_ADMIN_USER: admin
+      GRAFANA_ADMIN_PASSWORD: admin
+      GF_AUTH_ORG_ROLE: viewer
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: /etc/grafana/provisioning/dashboards/dashboard.json
+    volumes:
+      - ./grafana/dashboards/:/etc/grafana/provisioning/dashboards/
+      - ./grafana/datasources/:/etc/grafana/provisioning/datasources/
 
   scraper:
     container_name: scraper
+    restart: unless-stopped
     build:
       context: ./scraper
     volumes:
-      - data/:/app/data/
+      - data:/app/data/
 
   saver:
     container_name: saver
+    restart: unless-stopped
     build:
       context: ./saver
     volumes:
-      - data/:/app/data/
+      - data:/app/data/
 
 volumes:
   data:

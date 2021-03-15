@@ -1,0 +1,14 @@
+apiVersion: 1
+
+datasources:
+- name: PostgreSQL
+  type: postgres
+  access: proxy
+  url: postgres
+  password: admin
+  user: admin
+  database: coincap
+  isDefault: True
+  jsonData:
+    postgresVersion: 1200
+    sslmode: disable

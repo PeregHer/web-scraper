@@ -1,0 +1,1 @@
+CREATE TABLE data (currency VARCHAR(5), name VARCHAR(16), time TIMESTAMP, price FLOAT(32), cap BIGINT, volume BIGINT);
