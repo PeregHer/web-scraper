@@ -49,5 +49,5 @@ class Saver():
             print(file, 'Inséré')
 
 while True:
-    time.sleep(600)
+    time.sleep(300)
     Saver.insert_files()

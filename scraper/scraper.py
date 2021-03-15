@@ -41,4 +41,4 @@ scraper = Scraper()
 while True:
     scraper.search()
     scraper.save_json()
-    time.sleep(10)
+    time.sleep(60)
