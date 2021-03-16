@@ -36,6 +36,7 @@ Le fichier [docker-compose](/docker-compose.yml) contient aussi des variables d'
 ## Accéder à Grafana
 
 Pour accéder à Grafana il faut se rendre sur [localhost:80](http://127.0.0.1:80) (ou [104.199.52.73](http://104.199.52.73/) pour la version sur Google Cloud)
+
 L'accès est en view only mais il est possible de se connecter avec les identifiants par défaut qui sont:
 
 - `user: admin`
