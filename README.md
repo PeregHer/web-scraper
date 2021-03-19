@@ -15,16 +15,21 @@ Pour lancer le docker-compose il faut utilise la commande `docker-compose up -d`
 ### Scraping
 
 J'ai fais le choix de récupérer le cours de multiples cryptomonnaies sur le site [CoinCap](https://coincap.io/) à l'aide du module Selenium.
+Le choix de Selenium a été fait car le module est simple d'utilisation et adapté au projets. La doc est facile à trouver et Selenium permet aussi de faire de l'automatisation qui peut être bien de connaître.
 Pour ce faire j'ai deux scripts python, chacun en container. Il s'agit de scraper et saver.
 - Le script `scraper` utilise Selenium pour récupérer les données du site grace aux balises HTML et les stocker dans un fichier json toutes les 10 secondes
 - Le script `saver` s'occupe de charger les fichiers json afin de les insérer dans la base PostgreSQL toutes les 30 secondes
 
 ### PostgreSQL
 
+J'ai choisi d'utiliser PostgreSQL car Grafana n'accèpte pas tous types de bases de données. 
+
 Afin de créer la table à la création du containers j'utilise un volume pour lier le fichier SQL avec le dossier `docker-entrypoint-initdb.d` du container.
 Ce script va être exécuté au lancement du docker-compose et créer la table `data`.
 
 ### Grafana
+
+J'ai choisi Grafana pour la data vis car ce logiciel est très bien adapté à l'affichage de TimeSeries et s'actualise en temps réel. C'est aussi très simple de setup le provisioning pour créer la datasource et le dashboard à la création du container. 
 
 Afin de charger la datasource et le dashboard à la création du container il faut utiliser des volumes pour se servir des dossier `datasources` et `dashboards` à l'initialisation de grafana.
 
