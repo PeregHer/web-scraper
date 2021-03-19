@@ -22,7 +22,7 @@ Pour ce faire j'ai deux scripts python, chacun en container. Il s'agit de scrape
 
 ### PostgreSQL
 
-J'ai choisi d'utiliser PostgreSQL car Grafana n'accèpte pas tous types de bases de données. 
+J'ai choisi d'utiliser PostgreSQL car Grafana n'accèpte pas tous types de bases de données comme MongoDB que je comptais utiliser au début.
 
 Afin de créer la table à la création du containers j'utilise un volume pour lier le fichier SQL avec le dossier `docker-entrypoint-initdb.d` du container.
 Ce script va être exécuté au lancement du docker-compose et créer la table `data`.
