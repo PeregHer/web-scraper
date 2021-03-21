@@ -2,7 +2,7 @@
  
  ## Objectif
 
-L'objectif de ce projet est d'utiliser un outil de web scraping et le combiner avec une base de données afin de faire de la data viz avec des données récolté sur internet.
+L'objectif de ce projet est d'utiliser un outil de web scraping et de le combiner avec une base de données afin de faire de la data viz avec des données récoltées sur internet.
 
 J'ai fais le choix de tout utiliser en containers avec Selenium pour le scraping, PostgreSQL pour la base et Grafana pour la data viz. Le tout est hébergé sur une VM Google Cloud.
 
@@ -10,7 +10,7 @@ J'ai fais le choix de tout utiliser en containers avec Selenium pour le scraping
 
 Afin de créer l'intégralité des containers et du réseau avec une seule commande nous utilisons le fichier [docker-compose](/docker-compose.yml). Il contient les informations pour chaque containers.
 
-Pour lancer le docker-compose il faut utilise la commande `docker-compose up -d`,  cela va lancer la création et le lancement des 2 containers.
+Pour lancer le docker-compose il faut utiliser la commande `docker-compose up -d`,  cela va lancer la création et le lancement des 2 containers.
 
 ### Scraping
 
